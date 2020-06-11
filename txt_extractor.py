@@ -32,3 +32,11 @@ with open(list_of_descriptions) as f:
 
 for description in descriptions:
     print(description.rstrip())
+
+## JSON DUMPING OF LISTS TESTS ###
+# import json
+
+t# est = 'test.json'
+
+wi# th open(test, 'w') as fo:
+   #  json.dump(descriptions, fo)
