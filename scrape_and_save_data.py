@@ -23,7 +23,7 @@ for link_source_code in links_source_code:
 wikisource_http = "https://en.wikisource.org/"
 
 # i need to write all these links to a .txt file so that i don't have to keep requesting.
-fn = 'listofnamesandlinks.txt'
+fn = 'list_of_names_and_links.txt'
 
 with open(fn, 'w') as fo:
     for link_source_code in links_source_code:
@@ -79,17 +79,16 @@ table_desc_soup = table_soup.find_all('td',style="text-align:left;vertical-align
 type(table_desc_soup) # SAME! find_all returns a ResultSet
 
 ## trying to extract the description from the soup
-descriptions = []
-for td in table_desc_soup:
-    print(td.text.strip()) # got it
+# descriptions = []
+# for td in table_desc_soup:
+    # print(td.text.strip()) # got it
     # there are 3 /n at the end because the last 3 titles do not have descriptions
     # also the same for the first desc
 
 
+filename_desc = 'list_of_descriptions.txt'
 
-
-
-
-
-
-
+with open(filename_desc, 'w') as fileobject:
+    for td in table_desc_soup:
+       fileobject.writelines(td.text.strip() + '\n')
+    
