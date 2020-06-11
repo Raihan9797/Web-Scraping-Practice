@@ -33,10 +33,24 @@ with open(list_of_descriptions) as f:
 for description in descriptions:
     print(description.rstrip())
 
-## JSON DUMPING OF LISTS TESTS ###
+## JSON DUMPING OF LISTS  ###
+
 # import json
 
 # test = 'practice/test.json'
 
 # with open(test, 'w') as fo:
     # json.dump(descriptions, fo)
+
+descs_json = 'descriptions.json'
+links_json = 'links.json'
+names_json = 'names.json'
+
+def json_dumper(data, filename):
+    import json
+    with open(filename, 'w') as fileobject:
+        json.dump(data, fileobject)
+
+json_dumper(descriptions, descs_json)
+json_dumper(links, links_json)
+json_dumper(names, names_json)
