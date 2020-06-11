@@ -36,7 +36,7 @@ for description in descriptions:
 ## JSON DUMPING OF LISTS TESTS ###
 # import json
 
-t# est = 'test.json'
+# test = 'test.json'
 
-wi# th open(test, 'w') as fo:
+# with open(test, 'w') as fo:
    #  json.dump(descriptions, fo)
