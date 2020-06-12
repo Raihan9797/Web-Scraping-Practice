@@ -36,7 +36,7 @@ descriptions = strip_lists(descriptions)
 from bs4 import BeautifulSoup
 import requests
 
-for i in range(0, 5):
+for i in range(5, 11):
 
     # get source code from the link
     link_source_code = requests.get(links[i]).text
