@@ -29,13 +29,14 @@ def strip_lists(list_name):
 
 links = strip_lists(links)
 names = strip_lists(names)
+descriptions = strip_lists(descriptions)
 
 
-########## text extractor practice #########
+########## letter extractor #########
 from bs4 import BeautifulSoup
 import requests
 
-for i in range(0, 2):
+for i in range(0, 5):
 
     # get source code from the link
     link_source_code = requests.get(links[i]).text
@@ -44,18 +45,23 @@ for i in range(0, 2):
     link_soup = BeautifulSoup(link_source_code, 'lxml')
     print(link_soup.prettify)
 
+    # get title name and description
+    name = names[i]
+    desc = descriptions[i]
+    name_and_desc = f"{name}: {desc}"
+
     # extract text from the soup
+    # add the name and description to the top of the text
     link_soup_texts = link_soup.find_all('p')
-    link_text = ''
+    link_text = f"{name}: {desc} \n"
+
     for t in link_soup_texts:
+        print(type(t.text))
         link_text += t.text + '\n'
+    link_text
     print(link_text)
 
-    # get title name
-    name = names[i]
-    file_name = f"all_letters/{name}.txt"
-
-    # save it to a .txt file
+    # save it to a .txt file using its name and desc
+    file_name = f"all_letters/{name}_{desc}.txt"
     with open(file_name, 'w') as fo:
         fo.write(link_text)
-
