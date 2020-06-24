@@ -46,11 +46,12 @@ def extract_letter_range(start, end):
         name = names[i]
         desc = descriptions[i]
         name_and_desc = f"{name}: {desc}"
+        nd = name + " " + desc
 
         # extract text from the soup
         # add the name and description to the top of the text
         link_soup_texts = link_soup.find_all('p')
-        link_text = f"{name}: {desc} \n"
+        link_text = name_and_desc + "\n \n"
         for t in link_soup_texts:
             # print(type(t.text))
             link_text += t.text + '\n'
@@ -58,8 +59,8 @@ def extract_letter_range(start, end):
         # print(link_text)
 
         # save it to a .txt file using its name and desc
-        file_name = f"all_letters/{name}_{desc}.txt"
+        file_name = f"all_letters/{nd}.txt"
         with open(file_name, 'w') as fo:
             fo.write(link_text)
 
-extract_letter_range(11, 20) # 11 to 20
+extract_letter_range(11, 21)
