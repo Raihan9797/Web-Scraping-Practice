@@ -7,7 +7,7 @@ def help(update, context):
     update.message.reply_text("I will help you")
 
 def main():
-    updater = Updater("1215169390:AAHV5H5AxyL56zWF4_hlB3FK47Py0UEZy4A") # bot deleted
+    updater = Updater() # bot deleted
 
     dp = updater.dispatcher
 
