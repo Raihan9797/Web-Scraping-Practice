@@ -55,16 +55,16 @@ def extract_letter_range(start, end):
         link_text = name_and_desc + "\n \n"
         text_list.append(link_text)
         for t in link_soup_texts:
-            link_text += t.text + '\n'
+            ## link_text += t.text + '\n'
             text_list.append(t.text + '\n')
         
         # add list to dict
         test_dict[i] = text_list
 
         # save it to a .txt file using its name and desc
-        file_name = f"all_letters/{nd}.txt"
-        with open(file_name, 'w') as fo:
-            fo.write(link_text)
+        ## file_name = f"all_letters/{nd}.txt"
+        ## with open(file_name, 'w') as fo:
+            ## fo.write(link_text)
 
 extract_letter_range(0, 11)
 
