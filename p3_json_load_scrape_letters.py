@@ -29,6 +29,7 @@ descriptions = strip_lists(descriptions)
 
 
 
+test_dict = {}
 ##### letter extractor #####
 def extract_letter_range(start, end):
     from bs4 import BeautifulSoup
@@ -40,7 +41,6 @@ def extract_letter_range(start, end):
 
         # get prettified soup
         link_soup = BeautifulSoup(link_source_code, 'lxml')
-        # print(link_soup.prettify)
 
         # get title name and description
         name = names[i]
@@ -51,16 +51,28 @@ def extract_letter_range(start, end):
         # extract text from the soup
         # add the name and description to the top of the text
         link_soup_texts = link_soup.find_all('p')
+        text_list = []
         link_text = name_and_desc + "\n \n"
+        text_list.append(link_text)
         for t in link_soup_texts:
-            # print(type(t.text))
             link_text += t.text + '\n'
-        link_text
-        # print(link_text)
+            text_list.append(t.text + '\n')
+        
+        # add list to dict
+        test_dict[i] = text_list
 
         # save it to a .txt file using its name and desc
         file_name = f"all_letters/{nd}.txt"
         with open(file_name, 'w') as fo:
             fo.write(link_text)
 
-extract_letter_range(11, 21)
+extract_letter_range(0, 11)
+
+fn = 'all_letters/dict_0to10.json' # keep changing the file names based on the range of letters extracted
+
+def json_dumper(data, filename):
+    import json
+    with open(filename, 'w') as fileobject:
+        json.dump(data, fileobject)
+
+json_dumper(test_dict, fn)
