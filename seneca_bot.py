@@ -6,57 +6,33 @@ from telegram.ext import Updater
 updater = Updater(token = token, use_context=True)
 dispatcher = updater.dispatcher
 
-### storing list of letters and dictionary into the bot_data
-import json
-fn = 'all_letters/names.json'
-with open(fn, 'r') as fo:
-    names = json.load(fo)
-
-fn = 'all_letters/list_of_descriptions.txt'
-with open(fn, 'r') as fo:
-    descriptions = fo.read()
-
-
-# def store_letters(update, context):
-    # context.bot_data['names'] = names
-    # context.bot_data['list_of_descriptions'] = descriptions
-
 
 ### logging to see errors
 import logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 
 
-### start function
+########## start function ##########
+## storing list of letters and dictionary into the bot_data
+fn = 'meta_letters/names and descriptions.txt'
+with open(fn, 'r') as fo:
+    names_and_descriptions = fo.read()
 def start(update, context):
     context.bot.send_message(chat_id = update.effective_chat.id, text = "Starting! \nType '/help' to know the commands!")
     # store data
-    context.bot_data['names'] = names
-    context.bot_data['descriptions'] = descriptions
+    context.bot_data['names and descriptions'] = names_and_descriptions
 
 start_handler = CommandHandler('start', start)
 dispatcher.add_handler(start_handler)
 
 ### list letter names function
 def list_letters(update, context):
-    context.bot.send_message(chat_id = update.effective_chat.id, text = str(context.bot_data['names']) )
+    context.bot.send_message(chat_id = update.effective_chat.id, text = str(context.bot_data['names and descriptions']) )
 
 list_handler = CommandHandler('list', list_letters)
 dispatcher.add_handler(list_handler)
 
-### list descriptions from a txt file function
-def list_descriptions(update, context):
-    context.bot.send_message(chat_id = update.effective_chat.id, text = str(context.bot_data['descriptions']) )
-
-desc_handler = CommandHandler('desc', list_descriptions)
-dispatcher.add_handler(desc_handler)
-
-### read a letter function
-fn = 'practice data/practice_dict.json'
-with open(fn, 'r') as fo:
-    letter_dict = json.load(fo)
-
-
+####### read a letter function #########
 def read(update, context):
     key = update.message.text.partition(' ')[2]
 
