@@ -14,20 +14,26 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 
 ########## start function ##########
 ## storing list of letters and dictionary into the bot_data
-fn = 'meta_letters/names and descriptions.txt'
+fn = 'meta_letters/Volume 1.txt'
 with open(fn, 'r') as fo:
-    names_and_descriptions = fo.read()
+    vol1 = fo.read()
+fn = 'meta_letters/Volume 2.txt'
+with open(fn, 'r') as fo:
+    vol2 = fo.read()
+
 def start(update, context):
     context.bot.send_message(chat_id = update.effective_chat.id, text = "Starting! \nType '/help' to know the commands!")
     # store data
-    context.bot_data['names and descriptions'] = names_and_descriptions
+    context.bot_data['vol 1'] = vol1
+    context.bot_data['vol 2'] = vol2
 
 start_handler = CommandHandler('start', start)
 dispatcher.add_handler(start_handler)
 
 ### list letter names function
 def list_letters(update, context):
-    context.bot.send_message(chat_id = update.effective_chat.id, text = str(context.bot_data['names and descriptions']) )
+    context.bot.send_message(chat_id = update.effective_chat.id, text = str(context.bot_data['vol 1']) )
+    context.bot.send_message(chat_id = update.effective_chat.id, text = str(context.bot_data['vol 2']) )
 
 list_handler = CommandHandler('list', list_letters)
 dispatcher.add_handler(list_handler)
