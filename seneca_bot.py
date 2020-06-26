@@ -22,7 +22,8 @@ fn = 'meta_letters/Volume 2.txt'
 with open(fn, 'r') as fo:
     vol2 = fo.read()
 
-fn = 'all_letters/dict_0to10.json'
+# fn = 'all_letters/dict_0to10.json'
+fn = 'practice/thirty_letters.json'
 with open(fn, 'r') as fo:
     import json
     letters = json.load(fo)
