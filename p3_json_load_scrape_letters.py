@@ -6,9 +6,9 @@ def json_loader(filename):
     with open(filename) as file_object:
         return json.load(file_object)
 
-descs_json = 'descriptions.json'
-links_json = 'links.json'
-names_json = 'names.json'
+descs_json = 'meta_letters/descriptions.json'
+links_json = 'meta_letters/links.json'
+names_json = 'meta_letters/names.json'
 
 descriptions = json_loader(descs_json)
 names = json_loader(names_json)
