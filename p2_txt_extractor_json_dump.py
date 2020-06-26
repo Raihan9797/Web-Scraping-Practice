@@ -1,4 +1,4 @@
-list_of_names_and_links = 'list_of_names_and_links.txt'
+list_of_names_and_links = 'meta_letters/list_of_names_and_links.txt'
 
 # get a list of names and links from .txt file
 with open(list_of_names_and_links) as f:
@@ -25,7 +25,7 @@ names = list_of_lists[0]
 links = list_of_lists[1]
 
 # get a list of descriptions from .txt file
-list_of_descriptions = 'list_of_descriptions.txt'
+list_of_descriptions = 'meta_letters/list_of_descriptions.txt'
 
 with open(list_of_descriptions) as f:
     descriptions = f.readlines() # list created
@@ -34,17 +34,9 @@ for description in descriptions:
     print(description.rstrip())
 
 ## JSON DUMPING OF LISTS  ###
-
-# import json
-
-# test = 'practice/test.json'
-
-# with open(test, 'w') as fo:
-    # json.dump(descriptions, fo)
-
-descs_json = 'descriptions.json'
-links_json = 'links.json'
-names_json = 'names.json'
+descs_json = 'meta_letters/descriptions.json'
+links_json = 'meta_letters/links.json'
+names_json = 'meta_letters/names.json'
 
 def json_dumper(data, filename):
     import json
