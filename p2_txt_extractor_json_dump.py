@@ -46,3 +46,17 @@ def json_dumper(data, filename):
 json_dumper(descriptions, descs_json)
 json_dumper(links, links_json)
 json_dumper(names, names_json)
+
+
+### dump name and desc into a txt file
+names_and_descriptions = []
+for i in range(0, len(names)):
+    n = names[i]
+    d = descriptions[i]
+    nd = n.strip() + ' ' + d.strip()
+    names_and_descriptions.append(nd)
+
+fn = 'meta_letters/names and descriptions.txt'
+with open(fn, 'w') as fo:
+    for nd in names_and_descriptions:
+        fo.writelines(nd + '\n')
