@@ -23,7 +23,7 @@ for link_source_code in links_source_code:
 wikisource_http = "https://en.wikisource.org/"
 
 ##### WRITE ALL THE LINKS TO .TXT FILE SO I DONT HAVE TO KEEP REQUESTING #####
-fn = 'list_of_names_and_links.txt'
+fn = 'meta_letters/list_of_names_and_links.txt'
 with open(fn, 'w') as fo:
     for link_source_code in links_source_code:
         # print(link_source_code.text)
