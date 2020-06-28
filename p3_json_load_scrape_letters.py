@@ -67,16 +67,22 @@ def extract_letter_range(start, end):
         ## with open(file_name, 'w') as fo:
             ## fo.write(link_text)
 
-dictionary_of_letters = extract_letter_range(71, 91)
-name_of_dict = filenamer(71,91)
-json_dumper(dictionary_of_letters, name_of_dict)
+
 
 def filenamer(start, end):
     actual_end = end - 1
     fn = f"all_letters/dict_{start}to{actual_end}.json"
     return fn
 
+
+
 def json_dumper(data, filename):
     import json
     with open(filename, 'w') as fileobject:
         json.dump(data, fileobject, indent= 4)
+
+start = 61
+end = 66
+dictionary_of_letters = extract_letter_range(start, end)
+name_of_dict = filenamer(start,end)
+json_dumper(dictionary_of_letters, name_of_dict)
