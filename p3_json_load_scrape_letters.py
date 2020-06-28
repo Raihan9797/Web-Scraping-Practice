@@ -66,13 +66,13 @@ def extract_letter_range(start, end):
         ## with open(file_name, 'w') as fo:
             ## fo.write(link_text)
 
-extract_letter_range(0, 11)
+extract_letter_range(51, 66)
 
-fn = 'all_letters/dict_0to10.json' # keep changing the file names based on the range of letters extracted
+fn = 'all_letters/dict_51to65.json' # keep changing the file names based on the range of letters extracted
 
 def json_dumper(data, filename):
     import json
     with open(filename, 'w') as fileobject:
-        json.dump(data, fileobject)
+        json.dump(data, fileobject, indent= 4)
 
 json_dumper(test_dict, fn)
