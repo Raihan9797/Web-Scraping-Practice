@@ -29,11 +29,11 @@ descriptions = strip_lists(descriptions)
 
 
 
-test_dict = {}
 ##### letter extractor #####
 def extract_letter_range(start, end):
     from bs4 import BeautifulSoup
     import requests
+    test_dict = {}
 
     for i in range(start ,end):
         # get source code from the link
@@ -60,19 +60,23 @@ def extract_letter_range(start, end):
         
         # add list to dict
         test_dict[i] = text_list
+    return test_dict
 
         # save it to a .txt file using its name and desc
         ## file_name = f"all_letters/{nd}.txt"
         ## with open(file_name, 'w') as fo:
             ## fo.write(link_text)
 
-extract_letter_range(51, 66)
+dictionary_of_letters = extract_letter_range(71, 91)
+name_of_dict = filenamer(71,91)
+json_dumper(dictionary_of_letters, name_of_dict)
 
-fn = 'all_letters/dict_51to65.json' # keep changing the file names based on the range of letters extracted
+def filenamer(start, end):
+    actual_end = end - 1
+    fn = f"all_letters/dict_{start}to{actual_end}.json"
+    return fn
 
 def json_dumper(data, filename):
     import json
     with open(filename, 'w') as fileobject:
         json.dump(data, fileobject, indent= 4)
-
-json_dumper(test_dict, fn)
